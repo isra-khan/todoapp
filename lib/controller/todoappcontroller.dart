@@ -5,12 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:todoapp/constant/color.dart';
 
 class TodoAppController extends GetxController {
-  RxList<String> todoListId = <String>[].obs;
   RxList<String> todoList = <String>[].obs;
+  RxList<String> docId = <String>[].obs;
+
+  final TextEditingController textFieldController = TextEditingController();
+
   final CollectionReference todos =
       FirebaseFirestore.instance.collection('notes');
-  RxList<String> docId = <String>[].obs;
-  final TextEditingController textFieldController = TextEditingController();
+
   RxBool isLoading = true.obs;
 
   Future<List<String>> getTodoList() async {
